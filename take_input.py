@@ -1,4 +1,5 @@
 def take_input(text: str, choices: list = [], allow_type = str,  case_sensitive: bool = True):
+    '''just the default input() module but with extended capabilities like: type checking, case sensitive check, choices list'''
     usr_input = input(text)
 
     if allow_type == str:
