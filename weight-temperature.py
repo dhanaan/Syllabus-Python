@@ -35,11 +35,11 @@ def convert_temperature(amount: float, unit: str, unit_to: str) -> float:
     elif unit_to == 'R':
         return (celsius * 9/5) + 491.67
 
-mode = take_input('Convert Weight/Temperature (w/t): ', ['w', 't'], case_sensitive=False)
+mode = take_input('Convert Weight/Temperature (w/t): ', choices = ['w', 't'], case_sensitive=False)
 if mode == 'w':
-    unit = take_input(f'Unit to convert {weight_unit}: ', weight_unit, case_sensitive=False)
+    unit = take_input(f'Unit to convert {weight_unit}: ', choices = weight_unit, case_sensitive=False)
 else:
-    unit = take_input(f'Unit to convert {temp_unit}: ', temp_unit, case_sensitive=False)
+    unit = take_input(f'Unit to convert {temp_unit}: ', choices = temp_unit, case_sensitive=False)
 
 amount = take_input('Amount to convert: ', allow_type=float)
 
