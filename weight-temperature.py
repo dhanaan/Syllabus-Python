@@ -1,4 +1,4 @@
-import take_input as inp
+from take_input import take_input
 
 mode = ''
 weight_unit = ['g', 'kg', 'mg', 'lb', 'oz', 't']
@@ -35,13 +35,13 @@ def convert_temperature(amount: float, unit: str, unit_to: str) -> float:
     elif unit_to == 'R':
         return (celsius * 9/5) + 491.67
 
-mode = inp.take_input('Convert Weight/Temperature (w/t): ', ['w', 't'], case_sensitive=False)
+mode = take_input('Convert Weight/Temperature (w/t): ', ['w', 't'], case_sensitive=False)
 if mode == 'w':
-    unit = inp.take_input(f'Unit to convert {weight_unit}: ', weight_unit, case_sensitive=False)
+    unit = take_input(f'Unit to convert {weight_unit}: ', weight_unit, case_sensitive=False)
 else:
-    unit = inp.take_input(f'Unit to convert {temp_unit}: ', temp_unit, case_sensitive=False)
+    unit = take_input(f'Unit to convert {temp_unit}: ', temp_unit, case_sensitive=False)
 
-amount = inp.take_input('Amount to convert: ', allow_type=float)
+amount = take_input('Amount to convert: ', allow_type=float)
 
 print('\n-----------------------')
 
