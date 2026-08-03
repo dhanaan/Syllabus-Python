@@ -54,7 +54,8 @@ if mode == 'w':
             result = grams / to_grams[i]
             print(f'{result} {curr_unit}')
 else:
-    print(f'{amount} {unit.upper()} is also equal to')
+    unit = unit.upper()
+    print(f'{amount} {unit} is also equal to')
     for i, curr_unit in enumerate(temp_unit):
         if curr_unit != unit:
             result = convert_temperature(amount, unit, curr_unit.upper())
