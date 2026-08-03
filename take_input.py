@@ -1,37 +1,37 @@
-def take_input(text: str = "", rule = lambda x: True, choices: list = [], allow_type = str,  case_sensitive: bool = True, rule_error: str = "Rule violated"):
-    '''just the default input() module but with extended capabilities like: type checking, case sensitive check, choices list'''
-    usr_input = input(text)
-    
-    # Convert type first
-    if allow_type == str:
-        converted = usr_input
-    elif allow_type == int:
-        try:
-            converted = int(usr_input)
-        except ValueError:
-            print(f'Invalid, {usr_input} is not a number')
-            return take_input(text=text, rule=rule, choices=choices, allow_type=allow_type, case_sensitive=case_sensitive, rule_error=rule_error)
-    elif allow_type == float:
-        try:
-            converted = float(usr_input)
-        except ValueError:
-            print(f'Invalid, {usr_input} is not a number')
-            return take_input(text=text, rule=rule, choices=choices, allow_type=allow_type, case_sensitive=case_sensitive, rule_error=rule_error)
-    else:
-        raise ValueError(f'Unsupported type: {allow_type}')
-    
-    # Now apply rule to converted value
-    try:
-        rule(converted)
-    except ValueError:
-        print(rule_error)
-        return take_input(text=text, rule=rule, choices=choices, allow_type=allow_type, case_sensitive=case_sensitive, rule_error=rule_error)
+__all__ = ["take_input"]
 
-    if rule(converted):
-        if allow_type == str:
+def _check_type(usr_input, allow_type):
+    if allow_type is str:
+        return usr_input
+    
+    try:
+        return allow_type(usr_input)
+    except ValueError:
+        print(f'Invalid, {usr_input} is not a valid {allow_type.__name__}')
+        return None
+
+    
+def take_input(text: str = "", allow_type = str, case_sensitive: bool = True, choices: list = [], rule = lambda x: True, rule_error: str = "Rule violated"):
+    '''input() module with extended capabilities like type checking, case sensitive check, choices list and custom rules'''
+    while True:
+        usr_input = input(text)
+        converted = _check_type(usr_input, allow_type)
+            
+        if converted is None:
+            continue
+        try:
+            rule_valid = rule(converted)
+        except ValueError:
+            print(rule_error)
+            continue
+
+        if rule_valid:
+            if allow_type != str:
+                return converted
+
+            # str
             if choices == []:
                 return usr_input
-            
             if not case_sensitive:
                 usr_input = usr_input.lower()
                 choices = [item.lower() for item in choices]
@@ -39,9 +39,7 @@ def take_input(text: str = "", rule = lambda x: True, choices: list = [], allow_
                 return usr_input
             else:
                 print(f'Invalid, please choose between ({", ".join(choices)})')
-                return take_input(text=text, rule=rule, choices=choices, allow_type=allow_type, case_sensitive=case_sensitive, rule_error=rule_error)
+                continue
         else:
-            return converted
-    else:
-        print(rule_error)
-        return take_input(text=text, rule=rule, choices=choices, allow_type=allow_type, case_sensitive=case_sensitive, rule_error=rule_error)
+            print(rule_error)
+            continue
