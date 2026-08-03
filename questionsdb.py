@@ -50,7 +50,7 @@ trivia = [
     ['Which is the longest river in the world?', ['Nile', 'Amazon', 'Yangtze', 'Mississippi']],
     ['What does "LOL" stand for?', ['Laugh Out Loud', 'Lots Of Love', 'League Of Legends', 'Laughing On Loop']],
     ['Which is the largest desert in the world?', ['Antarctica', 'Sahara', 'Arabian', 'Gobi']],
-    ['Who created Facebook?', ['Mark Zuckerberg', 'Steve Jobs', 'Larry Page', 'Jeff Bezos']]
+    ['Who created Facebook?', ['Mark Zuckerberg', 'Steve Jobs', 'Larry Page', 'Jeff Bezos']],
     ['What is the capital of Canada?', ['Ottawa', 'Toronto', 'Vancouver', 'Montreal']],
     ['What is the capital of Germany?', ['Berlin', 'Munich', 'Frankfurt', 'Hamburg']],
     ['What is the capital of Italy?', ['Rome', 'Milan', 'Naples', 'Venice']],
@@ -105,5 +105,5 @@ trivia = [
     ['Who is Batman\'s butler?', ['Alfred', 'Robin', 'Joker', 'Gordon']],
     ['Who is Superman\'s home planet from?', ['Krypton', 'Mars', 'Earth', 'Vulcan']],
     ['Who lives at 124 Conch Street?', ['SpongeBob SquarePants', 'Patrick Star', 'Squidward', 'Mr. Krabs']],
-    ['Which Pokémon evolves into Raichu?', ['Pikachu', 'Charmander', 'Bulbasaur', 'Squirtle']],
+    ['Which Pokémon evolves into Raichu?', ['Pikachu', 'Charmander', 'Bulbasaur', 'Squirtle']]
 ]

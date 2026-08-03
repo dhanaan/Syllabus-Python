@@ -28,7 +28,7 @@ def game_loop(many_question: int = 10):
     question_idx = 1
     while question_idx <= many_question:
         asked.append(rand)
-        answer_list = questions[rand][1]
+        answer_list = questions[rand][1].copy()
         correct.append(answer_list[0])
         random.shuffle(answer_list)
         print(f'{question_idx}. {questions[rand][0]}')
