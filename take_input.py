@@ -36,10 +36,10 @@ def take_input(text = "", allow_type = str, case_sensitive = True, choices = Non
         if not choices:
             return usr_input
         if not case_sensitive:
-            usr_input_lower = usr_input.lower()
-            choices_lower = [item.lower() for item in choices]
+            usr_input = usr_input.lower()
+            choices = [item.lower() for item in choices]
 
-        if usr_input_lower in choices_lower:
+        if usr_input in choices:
             return usr_input
         else:
             print(f'Invalid, please choose between ({", ".join(choices)})')
