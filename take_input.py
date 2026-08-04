@@ -28,7 +28,7 @@ def take_input(text = "", allow_type = str, case_sensitive = True, choices = Non
         if not rule_valid:
             print(rule_error)
             continue
-        
+
         if allow_type is not str:
             return converted
 
@@ -44,3 +44,6 @@ def take_input(text = "", allow_type = str, case_sensitive = True, choices = Non
         else:
             print(f'Invalid, please choose between ({", ".join(choices)})')
             continue
+
+if __name__ == '__main__':
+    print(take_input("test: "))
