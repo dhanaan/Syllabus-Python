@@ -1,5 +1,8 @@
+def sum_all(*args):
+    return sum(args)
+
 def percentage(**kwargs):
-    total = sum(kwargs.values())
+    total = sum_all(*kwargs.values()) #unpack the values
     if total > 0:
         print(f'Total: {total}')
         for name, val in kwargs.items():
