@@ -16,5 +16,5 @@ def all_combination(text):
         
     return text_list
 
-usr_input = "fuck"
+usr_input = "hello"
 print(all_combination(usr_input))
