@@ -50,9 +50,13 @@ def game_loop(many_question: int = 10):
         rand = random.choice(remaining)
     result(asked, correct, answered)
 
-game_loop(10)
-while inp.take_input("Play again? (y/n): ", choices=['y', 'n'], case_sensitive=False) == 'y':
-    print()
+def main():
     game_loop(10)
+    while inp.take_input("Play again? (y/n): ", choices=['y', 'n'], case_sensitive=False) == 'y':
+        print()
+        game_loop(10)
 
-print('Thanks for playing!')
+    print('Thanks for playing!')
+
+if __name__ == '__main__':
+    main()
