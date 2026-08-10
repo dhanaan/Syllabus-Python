@@ -14,7 +14,7 @@ class Player:
 
     def print_card(self):
         for cards in self.hand:
-            print(cards.number, cards.color)
+            print(f'[{cards.color} {cards.number}]', end=' ')
     
 
 class Deck:
@@ -37,7 +37,7 @@ def fill_deck(deck, card, numbers, colors):
     for num in numbers:
         deck.append(card(color = colors, number = num))
 
-if __name__ == '__main__':
+def main():
     ALL_COLORS = ("red", "green", "yellow", "blue")
     draw_deck = []
     for color in ALL_COLORS:
@@ -46,4 +46,20 @@ if __name__ == '__main__':
     draw_deck.shuffle()
     player_user = Player([draw_deck.draw() for _ in range(8)])
     player_bot = Player([draw_deck.draw() for _ in range(8)])
-    player_user.print_card()
+    top = draw_deck.draw()
+
+
+    turn = 0
+    uno = False
+    while not uno:
+        print(f'Top Card: [{top.color} {top.number}]')
+        if turn == 0:
+            player_user.print_card()
+            picked_options = inp.take_input("Pick a card index/s to skip/d :")
+            turn = 1
+        else:
+            turn = 0
+
+
+if __name__ == '__main__':
+    main()
