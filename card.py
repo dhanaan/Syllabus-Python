@@ -23,7 +23,6 @@ class Card:
 
         suit = suit_emoji.get(self.suit, '?')
         rank = rank_alias.get(self.rank, self.rank)
-
         return f'{suit}  {rank}'
 
 
