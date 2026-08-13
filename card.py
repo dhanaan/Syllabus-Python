@@ -1,9 +1,13 @@
 import random
+from dataclasses import dataclass, field
+from typing import ClassVar
 
+@dataclass
 class Card:
-    def __init__(self, suit: str, rank: int):
-        self.suit = suit
-        self.rank = rank
+    suit: str
+    rank: int
+
+    SUIT: ClassVar[list] = ['spade', 'heart', 'diamond', 'club']
 
     def __str__(self):
         suit_emoji = {
@@ -25,16 +29,15 @@ class Card:
         rank = rank_alias.get(self.rank, self.rank)
         return f'{suit}  {rank}'
 
-
+@dataclass
 class Deck:
-    def __init__(self, cards=None):
-        self.cards = cards if cards is not None else []
+    cards: list = field(default_factory=list)
 
     @classmethod
     def standard_deck(cls):
         deck = cls()
 
-        for suit in ['spade', 'heart', 'diamond', 'club']:
+        for suit in Card.SUIT:
             for rank in range(1, 14):
                 deck.add(Card(suit, rank))
 
